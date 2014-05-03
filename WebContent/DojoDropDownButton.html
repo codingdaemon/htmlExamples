@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr">
+    
+    <head>
+        <style type="text/css">
+            body, html { font-family:helvetica,arial,sans-serif; font-size:90%; }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
+        djConfig="parseOnLoad: true">
+        </script>
+        <script type="text/javascript">
+            dojo.require("dijit.form.Button");
+            dojo.require("dijit.Menu");
+        </script>
+        <script type="text/javascript">
+        function disableDropDown(){
+        	window.button.disabled = true;
+        	alert("button disabled.");
+        }
+        
+        function enableDropDown(){
+        	window.button.disabled = false;
+        	alert("button enabled.");
+        }
+            dojo.addOnLoad(function() {
+                var menu = new dijit.Menu({
+                    style: "display: none;"
+                });
+                var menuItem1 = new dijit.MenuItem({
+                    label: "Save",
+                    iconClass: "dijitEditorIcon dijitEditorIconSave",
+                    onClick: function() {
+                        alert('save');
+                    }
+                });
+                menu.addChild(menuItem1);
+
+                var menuItem2 = new dijit.MenuItem({
+                    label: "Cut",
+                    iconClass: "dijitEditorIcon dijitEditorIconCut",
+                    onClick: function() {
+                        alert('cut');
+                    }
+                });
+                menu.addChild(menuItem2);
+
+                button = new dijit.form.DropDownButton({
+                    label: "hello!",
+                    name: "programmatic2",
+                    dropDown: menu,
+                    id: "progButton"
+                });
+                dojo.byId("dropdownButtonContainer").appendChild(button.domNode);
+            });
+        </script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/claro/claro.css"
+        />
+    </head>
+    
+    <body class=" claro ">
+    <input type="button" value="Disable" onclick="disableDropDown()" />
+    <input type="button" value="Enable" onclick="enableDropDown()" />
+        <div id="dropdownButtonContainer">
+        </div>
+        <!-- NOTE: the following script tag is not intended for usage in real
+        world!! it is part of the CodeGlass and you should just remove it when
+        you use the code -->
+        <script type="text/javascript">
+            dojo.addOnLoad(function() {
+                if (document.pub) {
+                    document.pub();
+                }
+            });
+        </script>
+    </body>
+
+</html>

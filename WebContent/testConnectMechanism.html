@@ -1,0 +1,25 @@
+<html>
+<head>
+<script src="lang.js"></script>
+<script src="connect.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+var myObj = {
+		func1 : function(a,b,c){
+			return a + b + c ;
+		},
+		func2 : function( a,b ){
+			return a * b;
+		}
+}
+
+dojo.connect( myObj, "func1", function(a,b,c){
+	console.log("myObj.func1 was called with params : " + a + "," + b +"," + c);
+});
+
+myObj.func1(1,2,3);
+</script>
+
+</body>
+</html>
